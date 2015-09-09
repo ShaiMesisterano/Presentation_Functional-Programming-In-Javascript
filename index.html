@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Functional Programming in Javascript</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=1024, user-scalable=no">
+        <link rel="stylesheet" href="./deckjs/core/deck.core.css">
+        <link rel="stylesheet" href="./deckjs/extensions/goto/deck.goto.css">
+        <link rel="stylesheet" href="./deckjs/extensions/menu/deck.menu.css">
+        <link rel="stylesheet" href="./deckjs/extensions/navigation/deck.navigation.css">
+        <link rel="stylesheet" href="./deckjs/extensions/hash/deck.hash.css">
+        <link rel="stylesheet" href="./deckjs/extensions/scale/deck.scale.css">
+        <link rel="stylesheet" href="./deckjs/themes/style/web-2.0.css">
+        <link rel="stylesheet" href="./deckjs/themes/transition/horizontal-slide.css">
+        <style>
+            .deck-container table{width: 100%}
+            .deck-container td,.deck-container th{border-bottom: solid 2px darkgray; padding: 3px}
+        </style>
+        <script src="./deckjs/modernizr.custom.js"></script>
+    </head>
+    
+    <body class="deck-container">
+        <div class="iscoWatermark">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <section class="slide intro">
+            <h1>Functional Programming<br>In Javascript</h1>
+        </section>
+        <section class="slide">
+            <h1>Shai Mesisterano
+                <div class="subtitle">Web Developer</div>
+                <div class="subtitle small">
+                    VX/LE Team
+                </div>
+            </h1>
+        </section>
+        
+        <section class="slide">
+            <h1>Definition</h1>
+        </section>
+        
+        <section class="slide">
+            <h2>Assembly Line</h2>
+            <img src="http://fluxicon.com/blog/wp-content/uploads/2011/03/112_0807_03z+ford_model_t+assembly_line_small_wide.jpeg" width="70%">
+        </section>
+        
+        <section class="slide">
+            <h2>Henry Ford</h2>
+            <blockquote>
+            Any customer<br>
+                can have a car <u>painted</u><br>
+                <u>any colour</u> that he wants<br>
+                so long as it is <u>black</u>
+            </blockquote>
+        </section>
+        
+        <section class="slide">
+            <h2>assertEqual( f(x), f(x) )</h2>
+            <img src="http://nocapes.net/uncle_bob.jpg" width="70%">
+        </section>
+        
+        <section class="slide">
+            <h2>Imperative Programming Problem</h2>
+            <ol>
+                <li>Human Language</li>
+                <li>Side Effects</li>
+            </ol>
+        </section>
+        
+        <section class="slide">
+            <h2>Mission</h2>
+            <pre>
+                var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            </pre>
+            <ol>
+                <li class="slide">No If</li>
+                <li class="slide">No For Loop</li>
+                <li class="slide">No Library</li>
+            </ol>
+        </section>
+        
+        <section class="slide">
+            <h2>Examples</h2>
+        </section>
+        
+        <section class="slide">
+            <h2>More Examples</h2>
+            <a href="https://www.reindex.io/blog/you-might-not-need-underscore" target="_blank">https://www.reindex.io/blog/you-might-not-need-underscore</a>
+        </section>
+    
+        <section class="slide">
+            <h2>Advantages</h2>
+            <ol>
+                <li>(Mostly) Shorter</li>
+                <li>More Reusable</li>
+                <li>More Testable</li>
+                <li>No control flow modification</li>
+                <li>Better Separation of Concerns</li>
+            </ol>
+        </section>
+        
+        <section class="slide">
+            <h1>Principles</h1>
+        </section>
+        
+        <section class="slide">
+            <h2>Pure Function</h2>
+            <ul>
+                <li>Return value is only determined by its input values</li>
+                <li>Without observable side effects</li>
+                <li>Math.cos(x) will, for the same value of x, always return the same result. It doesn't:
+                    <ol>
+                        <li>Change x</li>
+                        <li>Write to log files</li>
+                        <li>Do network requests</li>
+                        <li>Change program state</li>
+                        <li>etc.</li>
+                    </ol>
+                </li>
+            </ul>
+        </section>
+    
+        <section class="slide">
+            <h2>Impure</h2>
+            <code>
+var values = { a: 1 };<br>
+function impureFunction ( items ) {<br>
+&nbsp;&nbsp;var b = 1;<br>
+&nbsp;&nbsp;items.a = items.a * b + 2;<br>
+}<br>
+impureFunction( values );<br>
+            </code>
+        </section>
+    
+        <section class="slide">
+            <h2>Pure</h2>
+            <code>
+var values = { a: 1 };<br>
+function pureFunction ( a ) {<br>
+&nbsp;&nbsp;var b = 1;<br>
+&nbsp;&nbsp;a = a * b + 2;<br>
+&nbsp;&nbsp;return a;<br>
+}<br>
+values.a = pureFunction( values.a );<br>
+            </code>
+        </section>
+        
+        
+        <section class="slide">
+            <h2>Functions As First-Class Citizens</h2>
+            <img src="http://www.president.gov.il/Presidential_Activities/Press_Releases/PresidentMessageImages/R1.jpg" width="70%">
+        </section>
+        
+        <section class="slide">
+            <h1>Higher Order Functions</h1>
+        </section>
+        
+        <section class="slide">
+            <h2>Command vs. Query</h2>
+            <p class="slide">
+                <code>
+                    // Command<br><br>
+                    var x = [14, 3, 77];<br>
+                    var y = x.splice(1, 2);<br>
+                    console.log(x);           // [14]<br>
+                    console.log(y);           // [3, 77]<br>
+                </code>
+            </p>
+            <p class="slide">
+                <code>
+                    // Query<br><br>
+                    var x = [14, 3, 77];<br>
+                    var y = x.slice(1, 3);<br>
+                    console.log(x);          // [14, 3, 77]<br>
+                    console.log(y);          // [3, 77]<br>
+                </code>
+            </p>
+        </section>
+        
+        <section class="slide">
+            <h2>Disadvantages</h2>
+            <ol>
+                <li>Not all functionality is natively supported</li>
+                <li>Not natural</li>
+                <li>Harder to follow the flow</li>
+            </ol>
+        </section>
+        
+        <section class="slide">
+            <h2>Functional Bullet</h2>
+            <a href="https://www.npmjs.com/package/lodash.map" target="_blank">https://www.npmjs.com/package/lodash.map</a>
+        </section>
+            
+        <section class="slide">
+            <h1>Q&amp;A</h1>
+        </section>
+
+        <!-- deck.navigation snippet -->
+        <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+        <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+        <!-- deck.goto snippet -->
+        <form action="../" method="get" class="goto-form">
+            <label for="goto-slide">Go to slide:</label>
+            <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+            <datalist id="goto-datalist"></datalist>
+            <input type="submit" value="Go">
+        </form>
+        <!-- deck.hash snippet -->
+        <a href="../" title="Permalink to this slide" class="deck-permalink">#</a>
+        <div id="clock" style="position: fixed; bottom: 0; left: 0; z-index: 99; font-size: 12px">
+            <span id="clock-time"></span>
+            <a id="toggle-clock"></a>
+        </div>
+        <!-- End extension snippets. -->
+        <script src="./deckjs/jquery-1.7.2.min.js"></script>
+        <script src="./deckjs/core/deck.core.js"></script>
+        <script src="./deckjs/extensions/hash/deck.hash.js"></script>
+        <script src="./deckjs/extensions/menu/deck.menu.js"></script>
+        <script src="./deckjs/extensions/goto/deck.goto.js"></script>
+        <script src="./deckjs/extensions/status/deck.status.js"></script>
+        <script src="./deckjs/extensions/navigation/deck.navigation.js"></script>
+        <script src="./deckjs/extensions/scale/deck.scale.js"></script>
+        <script src="./deckjs/plugins/clock/deck.clock.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.deck('.slide', {
+                    clock: {
+                        enable: true
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <link rel="stylesheet" href="../css/blind.css">
+	</head>
+	<body>
+		<p>
+
+<div id="divElement">describe('Feature: get cash from an ATM:', function() {
+  context('Scenario: success', function() {
+    describe('When the user asks the ATM for 500', function() {
+      it('Then the ATM will have 500', function() {
+        expect(world().getATM().remainingCash()).to.be.eql(500);
+      });
+      it("Then the user's account will have 4500", function(done) {
+        world().getDB().accountFor(userId).then(function(acc) {
+          expect(cash).to.be.eql(acc.cash);
+        }).then(done, done);
+      });
+
+    });
+  });
+});</div>
+		<textarea id="textareaElement"></textarea>
+        
+		</p>
+		<script src="../js/blind.js"></script>
+		<script>
+			BlindJS.start({
+			input: divElement.innerHTML,
+			output: textareaElement
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <link rel="stylesheet" href="../css/blind.css">
+	</head>
+	<body>
+		<p>
+
+<div id="divElement">function sum(a, b) {
+  return 3;
+}</div>
+		<textarea id="textareaElement"></textarea>
+        
+		</p>
+		<script src="../js/blind.js"></script>
+		<script>
+			BlindJS.start({
+			input: divElement.innerHTML,
+			output: textareaElement
+			});
+		</script>
+	</body>
+</html>
